@@ -69,21 +69,18 @@ table(M$Human)
 table(M$AstProf)
 table(M$Pol)
 
-#Merge w/ higher education data
+##Merge w/ higher education data
 colnames(schooldata)[2]<-"schools"
 S<-schooldata
 S$schools2<-S$schools
 M$schools2<-NA
 
-#this loop find the "best match" between wiki school name and names in the instution database
+#this loop finds the "best match" between wiki school name and names in the instution database
 
 n<-0
 for (i in M$schools){
 n<-n+1
 tryCatch({
-  
- 
-  
   M$schools2[n]<-GetCloseMatches(as.character(M$schools[n]),schooldata$schools,n=1)
 }, error=function(e){})
 }
@@ -106,7 +103,7 @@ View(M2)
 #Export to .csv
 write.csv(M2, file="2018-2019 Comm & Media Job Wiki (Scraped).csv")
 
-#Plot Schools
+##Plot Schools on a map
 M2$LONGITUD<-as.numeric(M2$LONGITUD)
 M2$LATITUDE<-as.numeric(M2$LATITUDE)
 mapImageData <- get_googlemap(center = c(-97,40),
