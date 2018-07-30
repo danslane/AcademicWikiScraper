@@ -9,7 +9,7 @@ library(lubridate)
 library(fuzzywuzzyR)
 
 #set your working directory
-setwd("") 
+setwd("")  
 
 #Load higher ed databases
 schooldata <- read.csv("hd2015.csv", header=TRUE,stringsAsFactors=FALSE)
